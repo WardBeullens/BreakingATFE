@@ -401,7 +401,7 @@ void worker(std::vector<Vector> &Chain, const Form &f, Vector &start, size_t len
     Chain = compute_F_chain(f, start, len);
 }
 
-#define THREADS 16
+#define THREADS 10
 #define FCHAIN_LEN1 260
 #define FCHAIN_LEN2 30
 std::pair<Vector,Vector> find_colliding_pair(const Form &f1, const Form &f2){
@@ -481,7 +481,7 @@ std::pair<Vector,Vector> find_colliding_pair(const Form &f1, const Form &f2){
             for (size_t i = 0; i < THREADS; i++)
             {            
                 Vector sig(0);
-                size_t pos;
+                int pos;
                 for (pos = FChain[i].size()-N-2; pos >= 0; pos--)
                 {
                     sig = extract_signature(f2,FChain[i], pos);
